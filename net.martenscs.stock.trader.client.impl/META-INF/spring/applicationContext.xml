@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="stockServiceRmi" class="org.springframework.remoting.rmi.RmiProxyFactoryBean" lazy-init="false">
+		<property name="serviceUrl">
+			<value>rmi://localhost:1099/stockServiceRmi</value>
+		</property>
+		<property name="serviceInterface">
+			<value>net.martenscs.stock.trader.api.StockService</value>
+		</property>
+		<property name="cacheStub" value="true" />
+		<property name="lookupStubOnStartup" value="true" />
+		<property name="refreshStubOnConnectFailure" value="true" />
+	</bean>
+
+	<bean id="stockServiceHttpInvoker"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean" lazy-init="false">
+		<property name="serviceUrl">
+			<value>
+				http://localhost:8080/stocktradeserver/service/stockServiceHttpInvoker
+			</value>
+		</property>
+		<property name="serviceInterface">
+			<value>net.martenscs.stock.trader.api.StockService</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="stockService" class="net.martenscs.osgi.ws.services.stock.StockServiceImpl">
+		<property name="stocks">
+			<map>
+				<entry key="msft" value-ref="msft"></entry>
+				<entry key="sunw" value-ref="sunw"></entry>
+				<entry key="orcl" value-ref="orcl"></entry>
+				<entry key="ibm" value-ref="ibm"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- rmi exporter for the StockService -->
+	<bean name="/stockServiceRmi" class="org.springframework.remoting.rmi.RmiServiceExporter" lazy-init="false">
+		<property name="service">
+			<ref bean="stockService" />
+		</property>
+		<property name="serviceName">
+			<value>stockServiceRmi</value>
+		</property>
+		<property name="serviceInterface">
+			<value>net.martenscs.stock.trader.api.StockService</value>
+		</property>
+		<property name="registryPort" value="1099" />
+		
+	</bean>
+
+	<bean id="msft" class="net.martenscs.stock.trader.api.StockDTO">
+		<constructor-arg index="0"><!--ticker -->
+			<value>MSFT</value>
+		</constructor-arg>
+		<constructor-arg index="1"><!--avgVol -->
+			<value>75692500</value>
+		</constructor-arg>
+		<constructor-arg index="2"><!--change -->
+			<value>-.16</value>
+		</constructor-arg>
+		<constructor-arg index="3"><!--daysRange -->
+			<value>22.91 - 24.00</value>
+		</constructor-arg>
+		<constructor-arg index="4"><!--fiftyTwoWeekRange -->
+			<value>23.03 - 28.38</value>
+		</constructor-arg>
+		<constructor-arg index="5"><!--lastTrade -->
+			<value>22.99</value>
+		</constructor-arg>
+		<constructor-arg index="6"><!--marketCap -->
+			<value>234.53B</value>
+		</constructor-arg>
+		<constructor-arg index="7"><!--volume -->
+			<value>75692500</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="sunw" class="net.martenscs.stock.trader.api.StockDTO">
+		<constructor-arg index="0"><!--ticker -->
+			<value>SUNW</value>
+		</constructor-arg>
+		<constructor-arg index="1"><!--avgVol -->
+			<value>63942900</value>
+		</constructor-arg>
+		<constructor-arg index="2"><!--change -->
+			<value>-.02</value>
+		</constructor-arg>
+		<constructor-arg index="3"><!--daysRange -->
+			<value>4.56 - 4.70</value>
+		</constructor-arg>
+		<constructor-arg index="4"><!--fiftyTwoWeekRange -->
+			<value>3.56 - 5.40</value>
+		</constructor-arg>
+		<constructor-arg index="5"><!--lastTrade -->
+			<value>4.59</value>
+		</constructor-arg>
+		<constructor-arg index="6"><!--marketCap -->
+			<value>16.05b</value>
+		</constructor-arg>
+		<constructor-arg index="7"><!--volume -->
+			<value>66703285</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="orcl" class="net.martenscs.stock.trader.api.StockDTO">
+		<constructor-arg index="0"><!--ticker -->
+			<value>ORCL</value>
+		</constructor-arg>
+		<constructor-arg index="1"><!--avgVol -->
+			<value>47443800</value>
+		</constructor-arg>
+		<constructor-arg index="2"><!--change -->
+			<value>-.07</value>
+		</constructor-arg>
+		<constructor-arg index="3"><!--daysRange -->
+			<value>13.56 - 13.93</value>
+		</constructor-arg>
+		<constructor-arg index="4"><!--fiftyTwoWeekRange -->
+			<value>11.75 - 15.21</value>
+		</constructor-arg>
+		<constructor-arg index="5"><!--lastTrade -->
+			<value>13.70</value>
+		</constructor-arg>
+		<constructor-arg index="6"><!--marketCap -->
+			<value>73.08B</value>
+		</constructor-arg>
+		<constructor-arg index="7"><!--volume -->
+			<value>46390248</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="ibm" class="net.martenscs.stock.trader.api.StockDTO">
+		<constructor-arg index="0"><!--ticker -->
+			<value>IBM</value>
+		</constructor-arg>
+		<constructor-arg index="1"><!--avgVol -->
+			<value>5250390</value>
+		</constructor-arg>
+		<constructor-arg index="2"><!--change -->
+			<value>-.38</value>
+		</constructor-arg>
+		<constructor-arg index="3"><!--daysRange -->
+			<value>79.51 - 81.00</value>
+		</constructor-arg>
+		<constructor-arg index="4"><!--fiftyTwoWeekRange -->
+			<value>73.45 - 89.94</value>
+		</constructor-arg>
+		<constructor-arg index="5"><!--lastTrade -->
+			<value>80.28</value>
+		</constructor-arg>
+		<constructor-arg index="6"><!--marketCap -->
+			<value>124.47B</value>
+		</constructor-arg>
+		<constructor-arg index="7"><!--volume -->
+			<value>7019100</value>
+		</constructor-arg>
+	</bean>
+
+</beans>

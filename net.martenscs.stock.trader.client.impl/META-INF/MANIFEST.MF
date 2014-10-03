@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Client Impl
+Bundle-SymbolicName: net.martenscs.stock.trader.client.impl
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: net.martenscs.stock.trader.api;version="1.0.0",
+ org.aopalliance.aop;version="1.0.0",
+ org.springframework.aop;version="3.2.4.RELEASE",
+ org.springframework.aop.framework;version="3.2.4.RELEASE",
+ org.springframework.remoting.httpinvoker;version="3.2.4.RELEASE",
+ org.springframework.remoting.rmi;version="3.2.4.RELEASE",
+ org.springframework.remoting.support;version="3.2.4.RELEASE"
+Eclipse-AutoStart: true
+Eclipse-BuddyPolicy: registered
+

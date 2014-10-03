@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         id="ID"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="net.martenscs.client.stock.trader.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="Perspective"
+            class="net.martenscs.client.stock.trader.Perspective"
+            id="net.martenscs.client.stock.trader.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="ExplorerView"
+            class="net.martenscs.client.stock.trader.views.ExplorerView"
+            id="net.martenscs.client.stock.trader.explorerView">
+      </view>
+      <category
+            id="net.martenscs.client.stock.trader.client"
+            name="WatchList Category"/>
+      <view
+            category="net.martenscs.client.stock.trader.client"
+            class="net.martenscs.client.stock.trader.views.WatchListView"
+            icon="icons/sample.gif"
+            id="net.martenscs.client.stock.trader.views.WatchListView"
+            name="Watch List View"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               id="net.martenscs.client.stock.trader.WatchListView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.TaskList"/>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

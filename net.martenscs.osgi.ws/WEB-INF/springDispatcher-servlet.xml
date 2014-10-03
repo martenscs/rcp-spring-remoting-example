@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- httpInvoker exporter for the StockService -->
+	<bean name="/stockServiceHttpInvoker" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"
+		lazy-init="false">
+		<property name="service">
+			<ref bean="stockService" />
+		</property>
+		<property name="serviceInterface">
+			<value>net.martenscs.stock.trader.api.StockService</value>
+		</property>
+	</bean>
+
+</beans>

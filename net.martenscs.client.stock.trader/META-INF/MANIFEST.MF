@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Spring Remote Stock Trade Client Plug-in
+Bundle-SymbolicName: net.martenscs.client.stock.trader;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: net.martenscs.client.stock.trader.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-AutoStart: true
+Eclipse-RegisterBuddy: SpringClient
+Import-Package: net.martenscs.stock.trader.api;version="1.0.0",
+ org.slf4j;version="1.5.11",
+ org.slf4j.bridge;version="1.7.2",
+ org.springframework.beans.factory,
+ org.springframework.core;version="3.2.4.RELEASE"
